@@ -6,13 +6,13 @@
   <button class="overlay-button">클릭</button>
 </div>
 
-<button class="overlay-button" id="downloadBtn">다운로드</button>
+<button class="downloadBtn" id="downloadBtn">다운로드</button>
 
 <script>
 document.getElementById("downloadBtn").addEventListener("click", function() {
   const link = document.createElement("a");
-  link.href = "sample.pdf";   // 다운로드할 파일 경로
-  link.download = "myfile.pdf"; // 저장될 파일 이름
+  link.href = "csForm.png";   // 다운로드할 파일 경로
+  link.download = "csForm.png"; // 저장될 파일 이름
   document.body.appendChild(link);
   link.click();
   document.body.removeChild(link);
@@ -38,6 +38,13 @@ body {
 .overlay-button {
   position: absolute;
   top: 10%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.downloadBtn{
+  position: absolute;
+  top: 90%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
