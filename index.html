@@ -45,17 +45,39 @@ body {
 
 .downloadBtn{
   position: absolute;
-  top: 73%;
-  left: 20%;
   transform: translate(-50%, -50%);
-
-  background-color: transparent;  /* 투명 */
-  border: 2px solid white;        /* 테두리만 표시 */
-
+  background-color: transparent;
+  border: 2px solid white;
+  color: white;
   width: 400px;   /* 가로 크기 */
   height: 60px;   /* 세로 크기 */
+  cursor: pointer;
 }
 </style>
+<script>
+const btn = document.getElementById("btn");
+const img = document.getElementById("bgImage");
 
+// 원본 이미지 기준 버튼 위치 (픽셀)
+const originalPos = { x: 384, y: 2560 }; // 예: 이미지 1920x3528 기준
+
+function updateButton() {
+  const rect = img.getBoundingClientRect();
+  const imgWidth = rect.width;
+  const imgHeight = rect.height;
+
+  // 원본 이미지 비율에 맞춰 버튼 위치 계산
+  const left = (originalPos.x / img.naturalWidth) * imgWidth;
+  const top  = (originalPos.y / img.naturalHeight) * imgHeight;
+
+  btn.style.left = left + "px";
+  btn.style.top  = top + "px";
+}
+
+// 초기 위치
+img.onload = updateButton;
+// 화면 크기 변경 시 위치 업데이트
+window.addEventListener("resize", updateButton);
+</script>
 </body>
 </html>
