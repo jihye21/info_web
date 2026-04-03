@@ -2,9 +2,9 @@
 <html>
 <head>
 <div class="container">
-  <img src="background.png" class="bg" />
-  <button class="overlay-button">클릭</button>
-  <button class="downloadBtn" id="downloadBtn">다운로드</button>
+  <img src="background.png" class="bg" id="bgImage"/>
+  <button class="overlay-button" id="btn1"></button>
+  <button class="downloadBtn" id="btn2"></button>
 </div>
 
 
@@ -41,6 +41,12 @@ body {
   top: 10%;
   left: 50%;
   transform: translate(-50%, -50%);
+  background-color: transparent;
+  border: 2px solid white;
+  color: white;
+  width: 15%;   /* 가로 크기 */
+  height: 2%;   /* 세로 크기 */
+  cursor: pointer;
 }
 
 .downloadBtn{
@@ -55,29 +61,29 @@ body {
 }
 </style>
 <script>
-const btn = document.getElementById("btn");
 const img = document.getElementById("bgImage");
 
-// 원본 이미지 기준 버튼 위치 (픽셀)
-const originalPos = { x: 384, y: 2560 }; // 예: 이미지 1920x3528 기준
+// 각 버튼 + 좌표
+const buttons = [
+  { el: document.getElementById("btn1"), x: 305, y: 590 },
+  { el: document.getElementById("btn2"), x: 800, y: 1200 },
+  { el: document.getElementById("btn3"), x: 1500, y: 3000 },
+];
 
-function updateButton() {
+function updateButtons() {
   const rect = img.getBoundingClientRect();
-  const imgWidth = rect.width;
-  const imgHeight = rect.height;
 
-  // 원본 이미지 비율에 맞춰 버튼 위치 계산
-  const left = (originalPos.x / img.naturalWidth) * imgWidth;
-  const top  = (originalPos.y / img.naturalHeight) * imgHeight;
+  buttons.forEach(btn => {
+    const left = (btn.x / img.naturalWidth) * rect.width;
+    const top  = (btn.y / img.naturalHeight) * rect.height;
 
-  btn.style.left = left + "px";
-  btn.style.top  = top + "px";
+    btn.el.style.left = left + "px";
+    btn.el.style.top  = top + "px";
+  });
 }
 
-// 초기 위치
-img.onload = updateButton;
-// 화면 크기 변경 시 위치 업데이트
-window.addEventListener("resize", updateButton);
+img.onload = updateButtons;
+window.addEventListener("resize", updateButtons);
 </script>
 </body>
 </html>
