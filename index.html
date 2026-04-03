@@ -4,7 +4,8 @@
 <div class="container">
   <img src="background.png" class="bg" id="bgImage"/>
   <button class="overlay-button" id="btn1"></button>
-  <button class="downloadBtn" id="btn2"></button>
+  <button class="small-button" id="btn2"></button>
+  <button class="downloadBtn" id="btn3"></button>
 </div>
 
 
@@ -49,6 +50,19 @@ body {
   cursor: pointer;
 }
 
+.small-button {
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: transparent;
+  border: 2px solid white;
+  color: white;
+  width: 9%;   /* 가로 크기 */
+  height: 2%;   /* 세로 크기 */
+  cursor: pointer;
+}
+
 .downloadBtn{
   position: absolute;
   transform: translate(-50%, -50%);
@@ -66,7 +80,7 @@ const img = document.getElementById("bgImage");
 // 각 버튼 + 좌표
 const buttons = [
   { el: document.getElementById("btn1"), x: 305, y: 590 },
-  { el: document.getElementById("btn2"), x: 800, y: 1200 },
+  { el: document.getElementById("btn2"), x: 1480, y: 970 },
   { el: document.getElementById("btn3"), x: 1500, y: 3000 },
 ];
 
