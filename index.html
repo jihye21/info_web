@@ -4,9 +4,10 @@
 <div class="container">
   <img src="background.png" class="bg" />
   <button class="overlay-button">클릭</button>
+  <button class="downloadBtn" id="downloadBtn">다운로드</button>
 </div>
 
-<button class="downloadBtn" id="downloadBtn">다운로드</button>
+
 
 <script>
 document.getElementById("downloadBtn").addEventListener("click", function() {
@@ -44,9 +45,15 @@ body {
 
 .downloadBtn{
   position: absolute;
-  top: 90%;
-  left: 50%;
+  top: 73%;
+  left: 20%;
   transform: translate(-50%, -50%);
+
+  background-color: transparent;  /* 투명 */
+  border: 2px solid white;        /* 테두리만 표시 */
+
+  width: 400px;   /* 가로 크기 */
+  height: 60px;   /* 세로 크기 */
 }
 </style>
 
